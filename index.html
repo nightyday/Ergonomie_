@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Défi Frustrant</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('photo.webp'); /* Remplacez par le lien de votre image */
+            background-size: cover;  /* Adapter l'image à la taille de l'écran */
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Conteneur principal qui contient les deux sections */
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        /* Conteneur du formulaire */
+        #form-container {
+            width: 50%;  /* Largeur du formulaire */
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 15px 0;
+        }
+
+        input {
+            padding: 12px;
+            font-size: 18px;
+            margin: 10px 0;
+            width: 80%;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #ffd700;
+            outline: none;
+        }
+
+        .button {
+            padding: 12px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #218838;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 16px;
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* Conteneur à droite du formulaire */
+        #right-container {
+            width: 40%;  /* Largeur du conteneur à droite */
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .side-text {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            width: 80%;
+        }
+
+        .side-text img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* Conteneur du cercle avec les chiffres */
+        #circle-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            animation: rotate 10s linear infinite;
+            margin-top: 20px; /* Espacement avec le texte */
+        }
+
+        .digit {
+            position: absolute;
+            font-size: 18px;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 255, 0.7);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        /* Placement circulaire des chiffres */
+        #circle-container .digit:nth-child(1) { transform: rotate(0deg) translate(100px) rotate(0deg); }
+        #circle-container .digit:nth-child(2) { transform: rotate(36deg) translate(100px) rotate(-36deg); }
+        #circle-container .digit:nth-child(3) { transform: rotate(72deg) translate(100px) rotate(-72deg); }
+        #circle-container .digit:nth-child(4) { transform: rotate(108deg) translate(100px) rotate(-108deg); }
+        #circle-container .digit:nth-child(5) { transform: rotate(144deg) translate(100px) rotate(-144deg); }
+        #circle-container .digit:nth-child(6) { transform: rotate(180deg) translate(100px) rotate(-180deg); }
+        #circle-container .digit:nth-child(7) { transform: rotate(216deg) translate(100px) rotate(-216deg); }
+        #circle-container .digit:nth-child(8) { transform: rotate(252deg) translate(100px) rotate(-252deg); }
+        #circle-container .digit:nth-child(9) { transform: rotate(288deg) translate(100px) rotate(-288deg); }
+        #circle-container .digit:nth-child(10) { transform: rotate(324deg) translate(100px) rotate(-324deg); }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="main-container">
+        <!-- Formulaire à gauche -->
+        <div id="form-container">
+            <h1>Bienvenue dans la résolution du défi par GitLost !</h1>
+            <p>Essayez de remplir les champs ci-dessous pour compléter le défi. Bonne chance !</p>
+            <p>Un défi un peu frustrant mais amusant, dans lequel vous devrez interagir avec le formulaire de manière originale ! Prenez une pause café si nécessaire 😅.</p>
+
+            <input type="text" id="pseudo" placeholder="Votre pseudo ici" />
+            <input type="text" id="email" placeholder="Votre email ici" />
+            <input type="text" id="telephone" placeholder="Votre téléphone ici" readonly />
+
+            <button class="button" id="submit">Valider</button>
+            <button class="button" id="validate" style="display:none;">Valider la saisie</button>
+            <button class="button" id="confirm" style="display:none;">Confirmer la saisie</button>
+
+            <div class="message" id="pseudo-message"></div>
+
+            <!-- Cercle avec chiffres -->
+            <div id="circle-container">
+                <div class="digit" data-digit="0">0</div>
+                <div class="digit" data-digit="1">1</div>
+                <div class="digit" data-digit="2">2</div>
+                <div class="digit" data-digit="3">3</div>
+                <div class="digit" data-digit="4">4</div>
+                <div class="digit" data-digit="5">5</div>
+                <div class="digit" data-digit="6">6</div>
+                <div class="digit" data-digit="7">7</div>
+                <div class="digit" data-digit="8">8</div>
+                <div class="digit" data-digit="9">9</div>
+            </div>
+        </div>
+
+        <!-- Conteneur à droite avec du texte -->
+        <div id="right-container">
+         <!--!   <h2>Informations importantes</h2>
+            <div class="side-text" style="background-color: black;opacity: 80%;">
+                <p style="font-size: 20px;width: fit-content;">Les défis sont indéniablement fascinants, mais le véritable défi réside dans notre capacité à prendre du recul et à percevoir les parallèles entre les systèmes humains et océaniques. Chaque composant de notre corps trouve un écho dans les mécanismes de l’océan : du système circulatoire, semblable aux courants marins, aux rythmes vitaux qui résonnent dans le mouvement de l’eau. Cette analogie révèle non seulement les bienfaits d’un fonctionnement fluide et équilibré, mais aussi les conséquences dramatiques des dysfonctionnements. Lorsque ces systèmes sont en harmonie, tout fonctionne de manière optimale ; lorsque des perturbations surviennent, leurs effets sont tout aussi visibles et significatifs.</p>
+            </div>
+        </div>-->
+        <h2 style="font-family: 'Roboto', sans-serif; font-size: 32px; color: #ffffff; text-align: center; margin-bottom: 20px;">Informations importantes</h2>
+        <div class="side-text" style="background-color: #000000; opacity: 0.85; padding: 20px; border-radius: 8px;">
+            <p style="font-size: 20px; font-family: 'Open Sans', sans-serif; color: #f1f1f1; line-height: 1.6; text-align: justify;">Les défis sont indéniablement fascinants, mais le véritable défi réside dans notre capacité à prendre du recul et à percevoir les parallèles entre les systèmes humains et océaniques. Chaque composant de notre corps trouve un écho dans les mécanismes de l’océan : du système circulatoire, semblable aux courants marins, aux rythmes vitaux qui résonnent dans le mouvement de l’eau. Cette analogie révèle non seulement les bienfaits d’un fonctionnement fluide et équilibré, mais aussi les conséquences dramatiques des dysfonctionnements. Lorsque ces systèmes sont en harmonie, tout fonctionne de manière optimale ; lorsque des perturbations surviennent, leurs effets sont tout aussi visibles et significatifs.</p>
+        </div>
+    
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

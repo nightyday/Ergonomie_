@@ -1,0 +1,80 @@
+#floating-digits {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+#circle-container1, #circle-container2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    margin-top: -100px;
+    margin-left: -100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.digit {
+    position: absolute;
+    font-size: 20px;
+    transform-origin: center center;
+}
+
+
+#circle-container1 {
+    border: 2px solid red; /* Juste pour distinguer les cercles */
+}
+
+#circle-container2 {
+    border: 2px solid blue; /* Juste pour distinguer les cercles */
+}
+/* Conteneur pour la roue des mois */
+#month-wheel-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Style de la roue de mois */
+#month-wheel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 0;
+    width: 100%;
+    transition: transform 3s ease-out;
+}
+
+.month {
+    font-size: 18px;
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: rgba(0, 123, 255, 0.6);
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+#spin-wheel {
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#spin-wheel:hover {
+    background-color: #0056b3;
+}
+
+/* Animation de la roue */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
